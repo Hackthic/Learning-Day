@@ -1,0 +1,924 @@
+:root {
+  --background-color: #ffffff;
+  --text-color: #000000;
+}
+body{
+    margin: 0;
+    padding: 0;
+    
+    background-color: var(--background-color);
+  color: var(--text-color);
+  transition: background-color 0.8s, color 0.8s;
+  }
+  .dark-theme {
+    --background-color: #121212;
+    --text-color: #ffffff;
+  }
+  
+  .light-theme {
+    --background-color: #ffffff;
+    --text-color: #000000;
+  }
+  
+  nav {
+    background-color: #333;
+    padding: 10px;
+    text-align: center;
+    display: flex;
+    float:fixed;
+    justify-content: space-between;
+    align-items: center;
+    position: relative; /* add this to position the menu button absolutely */
+  }
+  
+  nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  nav li {
+    margin-right: 30px;
+  }
+  
+  nav a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  
+  nav a:hover {
+    color: #ccc;
+  }
+  
+  nav a.active {
+    color: #66d9ef;
+  }
+  
+  .search {
+    margin-left: auto;
+  }
+  
+  .search input[type="search"] {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .search button[type="submit"] {
+    background-color: #212a21;
+    color: #fff;
+    border: none;
+    padding: 8px 17px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .search button[type="submit"]:hover {
+    background-color: #3e8e41;
+  }
+  
+  .menu-btn {
+    display: none; /* hide the menu button by default */
+    position: fixed; /* position the menu button fixed */
+    top: 0; /* position the menu button at the top */
+    left: 0; /* position the menu button at the left */
+    z-index: 1; /* ensure the menu button is on top of other elements */
+    background-color: #333; /* add a background color to the menu button */
+    padding: 10px; /* add some padding to the menu button */
+    border: none; /* remove the border */
+    cursor: pointer; /* change the cursor to a pointer */
+  }
+  
+  .menu-btn span {
+    background-color: #fff; /* change the background color of the span elements */
+    height: 2px;
+    width: 20px;
+    display: block;
+    margin: 5px auto;
+    transition: background-color 0.2s ease;
+  }
+  
+  .menu-btn:hover span {
+    background-color: #ccc;
+  }
+  
+  /* Media Queries */
+  
+  /* For screens smaller than 768px (tablets and mobiles) */
+  @media only screen and (max-width: 768px) {
+    nav ul {
+      display: none; /* hide the nav links by default */
+    }
+    .menu-btn {
+      display: block; /* show the menu button */
+    }
+    nav.active ul {
+      display: block; /* show the nav links when the menu button is clicked */
+      position: absolute; /* position the nav links absolutely */
+      top: 50px; /* position the nav links 50px from the top */
+      left: 0; /* position the nav links 0px from the left */
+      background-color: #333; /* add a background color to the nav links */
+      padding: 10px; /* add some padding to the nav links */
+      width: 100%; /* make the nav links full-width */
+    }
+    nav.active .search {
+      display: none; /* hide the search box when the menu button is clicked */
+    }
+  }
+
+.introduction{
+  width: 80%;
+}
+.introduction p{
+  font-size: 30px;
+}
+
+  .banner-box {
+    width: 100%;
+    padding: 10px;
+    
+    overflow: hidden;
+    min-height: 300px; /* add a minimum height */
+    display: flex;
+    flex-direction: column;
+  }
+  @media (max-width: 768px) {
+    .banner-box {
+      padding: 5px;
+    }
+    .banner-box img {
+      max-width: 100%;
+    }
+    .text {
+      font-size: 5vw;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .banner-box {
+      padding: 2px;
+    }
+    .banner-box img {
+      max-width: 100%;
+    }
+    .text {
+      font-size: 4vw;
+    }
+  }
+  
+  @media (max-width: 320px) {
+    .banner-box {
+      padding: 1px;
+    }
+    .banner-box img {
+      max-width: 100%;
+    }
+    .text {
+      font-size: 2vw;
+    }
+  }
+  
+  .banner-box img {
+    max-width: 100%;
+    max-height: 300px;
+    width: auto;
+    height: auto;
+    object-fit: cover; /* add object-fit: cover */
+    display: block;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+  @media (max-width: 768px) {
+    .banner-box img {
+      width: 100vw; /* make the image take up the full viewport width */
+      height: 30vh; /* set a fixed height for the image on smaller screens */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .banner-box img {
+      width: 100vw; /* make the image take up the full viewport width */
+      height: 20vh; /* set a fixed height for the image on smaller screens */
+    }
+  }
+  
+  @media (max-width: 320px) {
+    .banner-box img {
+      width: 100vw; /* make the image take up the full viewport width */
+      height: 15vh; /* set a fixed height for the image on smaller screens */
+    }
+  }
+
+  .box {
+    width: 100%; /* take up the full viewport width */
+    height: auto; /* take up the full viewport height */
+    margin: 0; /* remove any margin */
+    padding: 0; /* remove any padding */
+    display: flex; /* use flexbox to layout the child elements */
+    flex-direction: row; /* make the child elements appear side by side horizontally */
+    overflow: hidden;
+    border: 1px solid #0b0909;
+    margin-bottom: 70px;
+  }
+  
+  /* Make the box responsive on smaller screens */
+  @media (max-width: 768px) {
+   .box {
+      flex-direction: column; /* stack the child elements vertically on smaller screens */
+    }
+  }
+  
+  @media (max-width: 480px) {
+   .box {
+      padding: 10px; /* add some padding on smaller screens */
+    }
+  }
+  
+  @media (max-width: 320px) {
+   .box {
+      padding: 5px; /* reduce padding on very small screens */
+    }
+  }
+  
+  .text {
+    width: 100%; /* take up the full width of the box */
+    padding: 40px; /* reduce padding */
+    font-size: 4vw;
+  }
+  @media (max-width: 768px) {
+    .text {
+       font-size: 5vw;
+     }
+   }
+   
+   @media (max-width: 480px) {
+    .text {
+       font-size: 4vw;
+     }
+   }
+   
+   @media (max-width: 320px) {
+    .text {
+       font-size: 3vw;
+     }
+   }
+   .wrapper {
+    
+    /*This part is important for centering*/
+    display: grid;
+    place-items: center;
+  }
+  
+  .typing-demo {
+    width: 22ch;
+    animation: 2s steps(22), blink .5s step-end infinite alternate;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid;
+    font-family: monospace;
+    font-size: 2em;
+  }
+  
+  @keyframes typing {
+    from {
+      width: 0
+    }
+  }
+  
+  @keyframes blink {
+    50% {
+      border-color: transparent
+    }
+  }
+  
+  
+  .image {
+    width: 80%; /* take up 50% of the box's width */
+    padding: 40px; /* add some padding around the image */
+    text-align: center; /* center the image horizontally */
+  }
+  
+  .image img {
+    
+    max-width: 90%; 
+    max-height: 400px;
+    margin-left:0px;/* make the image take up the full width of the image container */
+    height: auto; /* maintain the image's aspect ratio */
+    border-radius: 10px; /* add a slight border radius to the image */
+  }
+
+
+  .course {
+    text-align: center;
+    margin: 20px auto;
+  }
+  
+  .course h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  /* Responsive styles */
+  
+  /* Medium screens (768px and up) */
+  @media (max-width: 768px) {
+    .course {
+      margin: 15px auto;
+    }
+    .course h2 {
+      font-size: 20px;
+    }
+  }
+  
+  /* Small screens (480px and up) */
+  @media (max-width: 480px) {
+    .course {
+      margin: 10px auto;
+    }
+    .course h2 {
+      font-size: 18px;
+    }
+  }
+  
+  /* Extra small screens (320px and up) */
+  @media (max-width: 320px) {
+    .course {
+      margin: 5px auto;
+    }
+    .course h2 {
+      font-size: 16px;
+    }
+  }
+
+  .course-section {
+    
+    padding: 20px;
+  }
+  
+  .course-container {
+    max-width: 1040px;
+    margin: 0 auto;
+  }
+  
+  .course-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .course-card {
+    
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: calc(60% - 10px); /* adjust the width to fit your design */
+    margin: 10px;
+    transition: transform 0.3s; /* add transition effect */
+  }
+  
+  .course-card:hover {
+    transform: perspective(1000px) rotateY(10deg); /* tilt effect */
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.5); /* yellowish shadow */
+  }
+  
+  .course-card:hover::before {
+    cursor: url('data:image/svg+xml,%3Csvg%20width%3D%2214%22%20height%3D%2214%22%3E%3Ccircle%20cx%3D%227%22%20cy%3D%227%22%20r%3D%226%22%20fill%3D%22%23ff6666%22/%3E%3C/svg%3E'), auto; /* reddish circular cursor */
+  }
+  
+  .course-card img {
+    background-color: white;
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+  }
+  
+  .course-card-body {
+    padding: 10px;
+    position: relative;
+  }
+  .enroll-btn {
+    position: absolute; /* position the button absolutely */
+    bottom: 5px; /* position the button at the bottom of the card */
+    left: 50%; /* center the button horizontally */
+    transform: translateX(-50%); /* center the button horizontally */
+    background-color: #337ab7; /* add a blue background color */
+    color: #fff; /* add white text color */
+    border: none; /* remove border */
+    padding: 0px 10px; /* add some padding */
+    font-size: 16px; /* adjust font size */
+    cursor: pointer; /* add a pointer cursor */
+    border-radius: 5px; /* add a slight border radius */
+    transition: background-color 0.3s; /* add a transition effect */
+  }
+  
+  .enroll-btn:hover {
+    background-color: #23527c; /* change the background color on hover */
+  }
+  
+  /* Responsive styles */
+  
+  /* Medium screens (768px and up) */
+  @media (max-width: 768px) {
+    .enroll-btn {
+      font-size: 14px; /* adjust font size for smaller screens */
+      padding: 8px 16px; /* adjust padding for smaller screens */
+    }
+  }
+  
+  /* Small screens (480px and up) */
+  @media (max-width: 480px) {
+    .enroll-btn {
+      font-size: 12px; /* adjust font size for smaller screens */
+      padding: 6px 12px; /* adjust padding for smaller screens */
+    }
+  }
+  
+  /* Extra small screens (320px and up) */
+  @media (max-width: 320px) {
+    .enroll-btn {
+      font-size: 10px; /* adjust font size for smaller screens */
+      padding: 4px 8px; /* adjust padding for smaller screens */
+    }
+  }
+  
+  .course-card-body h5 {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .course-card-body p {
+    font-size: 16px;
+   
+  }
+  
+  /* Responsive styles */
+  
+  /* Medium screens (768px and up) */
+  @media (max-width: 768px) {
+    .course-card {
+      width: calc(33.33% - 20px);
+    }
+  }
+  
+  /* Small screens (480px and up) */
+  @media (max-width: 480px) {
+    .course-card {
+      width: calc(50% - 20px);
+    }
+  }
+  
+  /* Extra small screens (320px and up) */
+  @media (max-width: 320px) {
+    .course-card {
+      width: 100%;
+      margin: 10px 0;
+    }
+  }
+
+  
+
+  .mentor {
+    text-align: center;
+    margin: 20px auto;
+  }
+  
+  .mentor h3 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  /* Responsive styles */
+  
+  /* Medium screens (768px and up) */
+  @media (max-width: 768px) {
+    .mentor {
+      margin: 15px auto;
+    }
+    .mentor h3 {
+      font-size: 16px;
+    }
+  }
+  
+  /* Small screens (480px and up) */
+  @media (max-width: 480px) {
+    .mentor {
+      margin: 10px auto;
+    }
+    .mentor h3 {
+      font-size: 14px;
+    }
+  }
+  
+  /* Extra small screens (320px and up) */
+  @media (max-width: 320px) {
+    .mentor {
+      margin: 5px auto;
+    }
+    .mentor h3 {
+      font-size: 12px;
+    }
+  }
+
+
+  .card-container {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+  }
+  
+  .card {
+    width: 30%; /* adjust the width to fit three cards in a row */
+    margin: 10px;
+    
+    
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s, box-shadow 0.3s; 
+  }
+  .card:hover {
+    transform: rotate(2deg) scale(1.05); /* tilt and scale the card */
+    box-shadow: 0 10px 20px rgba(0, 128, 0, 0.5); /* add greenish shadow */
+  }
+  
+  .card-image {
+    width: 100%;
+    padding: 0px;
+    text-align: center;
+  }
+  
+  .card-image img {
+    max-width: 100%;
+    max-width: 100%;
+    height: auto;
+    border-radius: 50px;
+  }
+  
+  .card-text {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    height: 50%; /* take up half the height of the box */
+  }
+  
+  /* Media Queries */
+  
+  /* For screens smaller than 768px (tablets and mobiles) */
+  @media only screen and (max-width: 768px) {
+    .card {
+      width: 45%; /* adjust the width to fit two cards in a row */
+    }
+  }
+  
+  /* For screens smaller than 480px (mobiles) */
+  @media only screen and (max-width: 480px) {
+    .card {
+      width: 90%; /* adjust the width to fit one card in a row */
+      margin: 10px auto; /* center the card horizontally */
+    }
+    .card-image {
+      padding: 10px; /* add some padding to the image */
+    }
+    .card-text {
+      font-size: 14px; /* reduce the font size */
+    }
+  }
+  .montor{
+    align-items: center;
+   margin-left: 100px;
+  }
+
+  .testimonial {
+    text-align: center;
+    margin: 30px auto;
+  }
+  
+  .testimonial h1 {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  /* Responsive styles */
+  
+  /* Medium screens (768px and up) */
+  @media (max-width: 768px) {
+    .testimonial {
+      margin: 20px auto;
+    }
+    .testimonial h1 {
+      font-size: 28px;
+    }
+  }
+  
+  /* Small screens (480px and up) */
+  @media (max-width: 480px) {
+    .testimonial {
+      margin: 15px auto;
+    }
+    .testimonial h1 {
+      font-size: 22px;
+    }
+  }
+  
+  /* Extra small screens (320px and up) */
+  @media (max-width: 320px) {
+    .testimonial {
+      margin: 10px auto;
+    }
+    .testimonial h1 {
+      font-size: 18px;
+    }
+  }
+
+  .testimonial-box {
+    
+    padding: 20px;
+    
+    border-radius: 10px;
+    margin: 20px;
+    width: 80%; /* adjust the width to fit your design */
+    margin: 0 auto; /* center the box horizontally */
+  }
+  
+  .testimonial-box .carousel {
+    position: relative;
+  }
+  
+  .testimonial-box .carousel-inner {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  .testimonial-box .carousel-inner .item {
+    position: relative;
+    display: none;
+    float: left;
+    width: 100%;
+  }
+  
+  .testimonial-box .carousel-inner .item.active {
+    display: block;
+  }
+  
+  .testimonial-box .carousel-inner .item img {
+   
+    max-width: 100%;
+    width: 50%;
+    height: 150px; /* adjust the height to fit your design */
+    object-fit: cover;
+    float: right;
+    border-radius: 10px 10px 10px 0;
+    
+  }
+  
+  .testimonial-box .carousel-inner .item .testimonial-text {
+    width: 50%;
+
+    padding: 20px;
+    font-size: 16px;
+    
+    margin-left: 80px;
+    margin-right: 20px;
+  }
+  
+  .testimonial-box .carousel-inner .item .testimonial-text .author {
+    font-weight: bold;
+    color: #66d9ef;
+  }
+  
+  .testimonial-box .carousel-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .testimonial-box .carousel-nav .nav-btn {
+   background-color: none;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  
+  
+  .testimonial-box .carousel-nav .nav-btn.prev {
+    float: left;
+  }
+  
+  .testimonial-box .carousel-nav .nav-btn.next {
+    float: right;
+  }
+  
+  /* Media Queries */
+  
+  /* For screens smaller than 768px (tablets and mobiles) */
+  @media only screen and (max-width: 768px) {
+    .testimonial-box {
+      width: 90%; /* adjust the width to fit smaller screens */
+    }
+    .testimonial-box .carousel-inner .item img {
+      height: 80px; /* adjust the height to fit smaller screens */
+    }
+  }
+  
+  /* For screens smaller than 480px (mobiles) */
+  @media only screen and (max-width: 480px) {
+    .testimonial-box {
+      width: 100%; /* adjust the width to fit mobile screens */
+    }
+    .testimonial-box .carousel-inner .item img {
+      height: 60px; /* adjust the height to fit mobile screens */
+    }
+    .testimonial-box .carousel-nav .nav-btn {
+      padding: 5px 10px; /* adjust the padding to fit mobile screens */
+    }
+  }
+
+
+  .social-media {
+    text-align: center;
+    margin: 40px auto;
+  }
+  
+  .social-media h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .social-media ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .social-media li {
+    margin: 50px;
+  }
+  
+  .social-media a {
+    color: #337ab7;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 50%;
+    
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s; /* add transition effect */
+  }
+  
+  .social-media a:hover {
+    color: #23527c;
+    background-color: orange;
+    transform: scale(1.2); /* scale up to 1.2 times the original size */
+    box-shadow: 0 0 20px rgba(0, 128, 0, 0.3); /* add greenish shadow */
+  }
+  
+  .social-media span {
+    font-size: 14px;
+    color: #666;
+    margin-left: 10px;
+  }
+  
+  .social-media i {
+    font-size: 24px;
+    margin-right: 10px;
+    color: #337ab7;
+  }
+  
+  /* Responsive styles */
+  
+  /* Medium screens (768px and up) */
+  @media (max-width: 768px) {
+    .social-media ul {
+      flex-direction: column;
+    }
+    .social-media li {
+      margin: 20px 0;
+    }
+  }
+  
+  /* Small screens (480px and up) */
+  @media (max-width: 480px) {
+    .social-media h2 {
+      font-size: 20px;
+    }
+    .social-media li {
+      margin: 15px 0;
+    }
+  }
+  
+  /* Extra small screens (320px and up) */
+  @media (max-width: 320px) {
+    .social-media h2 {
+      font-size: 18px;
+    }
+    .social-media li {
+      margin: 10px 0;
+    }
+  }
+
+  footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+  }
+  
+  .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .footer-links-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .footer-links {
+    margin: 20px;
+    flex: 1; /* make each link column equal width */
+  }
+  
+  .footer-links h4 {
+    margin-top: 0;
+  }
+  
+  .footer-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .footer-links li {
+    margin-bottom: 10px;
+  }
+  
+  .footer-links a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .footer-links a:hover {
+    color: #ccc;
+  }
+  
+  .footer-copyright {
+    text-align: left;
+    padding-left: 20px;
+    margin-top: 20px;
+    border-top: 1px solid #444;
+    padding-top: 10px;
+  }
+  
+  .footer-copyright p {
+    margin-bottom: 0;
+  }
+  
+  /* Responsive styles */
+  
+  /* On screens smaller than 768px, make each link column 50% wide */
+  @media (max-width: 768px) {
+  .footer-links {
+      flex-basis: 50%;
+    }
+  }
+  
+  /* On screens smaller than 480px, make each link column 100% wide */
+  @media (max-width: 480px) {
+  .footer-links {
+      flex-basis: 100%;
+    }
+  }
+
+  /* Ball styling */
+.ball {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 80px;
+  height: 80px;
+  filter: blur(40px);
+  border-radius: 50%;
+  background-color: rgba(108, 143, 73, 0.73);
+  pointer-events: none; /* Ensures the ball doesn't interfere with clicking other elements */
+  z-index: 1000; /* Ensures the ball is above other elements */
+}
